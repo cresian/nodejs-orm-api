@@ -4,8 +4,8 @@ const app = express();
 const cors = require('cors');
 const errorHandler = require('_middleware/error-handler');
 
-app.unsubscribe(express.json());
-app.unsubscribe(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use('/users', require('./users/users.controller'));
