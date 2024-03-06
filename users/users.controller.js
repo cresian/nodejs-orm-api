@@ -29,7 +29,7 @@ function getById(req, res, next) {
         .catch(next);
 }
 
-function create(res, res, next) {
+function create(req, res, next) {
     userService.create(req.body)
         .then(() => res.json({ message: 'User Created' }))
         .catch(next);
@@ -63,7 +63,7 @@ function createSchema(req, res, next) {
 }
 
 function updateSchema(req, res, next) {
-    const schema = joi.object({
+    const schema = Joi.object({
         title: Joi.string().empty(''),
         firstName: Joi.string().empty(''),
         lastName: Joi.string().empty(''),

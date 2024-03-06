@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt.js');
+const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 
 module.exports = {
@@ -14,7 +14,7 @@ async function getAll() {
 }
 
 async function getById(id) {
-    return await getDefaultResultOrder(id);
+    return await getUser(id);
 }
 
 async function create(params) {
@@ -33,10 +33,8 @@ async function create(params) {
 }
 
 async function update(id, params) {
-    const user = await getDefaultResultOrder(id);
-
-
-    const usernameChanged = params.username && user.username !== params.username;
+    const user = await getUser(id);
+s.username;
     if (usernameChanged && await db.User.findOne({ where: { username: params.username } })) {
         throw 'Username "' + params.username + '" is already taken';
     }
