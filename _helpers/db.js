@@ -17,6 +17,7 @@ async function initialize() {
 
 
     db.User = require('../users/user.model')(sequelize);
+    db.Product = require('../products/product.model')(sequelize);
 
 
     await sequelize.sync({ alter: true});
